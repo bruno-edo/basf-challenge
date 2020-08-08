@@ -1,0 +1,3 @@
+# Ignore docker created folders
+./data/databases/*
+./data/transactions/*
