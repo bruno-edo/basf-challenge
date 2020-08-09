@@ -6,5 +6,8 @@ data/transactions/*
 data/dbms/*
 data/dumps/*
 
+# Ignore VS Code created files
+.vscode
+
 # Don't ignore
 !.gitkeep
