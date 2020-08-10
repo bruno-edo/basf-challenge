@@ -1,22 +1,31 @@
 import React from 'react';
 
 import Home from './features/home';
-import store from './store';
+import Chemicals from "./features/chemicals";
+import store, { history } from './store';
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { ConnectedRouter as Router } from "connected-react-router";
 import { Provider } from 'react-redux';
+
+import './app.css';
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </Provider>
+    <div className="App">
+      <Provider store={store}>
+        <Router history={history}>
+          <Switch>
+            <Route path="/chemicals">
+              <Chemicals />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
+    </div>
   );
 }
 

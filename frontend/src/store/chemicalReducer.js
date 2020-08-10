@@ -24,7 +24,9 @@ const querySuccess = (state, { data }) => ({
   ...state,
   loading: false,
   error: false,
-  chemicals: data,
+  chemicals: {
+    ...data
+  },
 });
 
 const queryFailure = (state, {}) => ({
