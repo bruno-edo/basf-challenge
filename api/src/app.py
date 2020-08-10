@@ -4,6 +4,7 @@ import os
 
 from flask import Flask, jsonify
 from neo4j import GraphDatabase
+from flask_cors import CORS
 
 neo4j_username = os.environ.get('NEO4J_USERNAME')
 neo4j_password = os.environ.get('NEO4J_PASSWORD')
@@ -14,6 +15,7 @@ neo4j_driver = GraphDatabase.driver(
     'bolt://neo4j:{}'.format(neo4j_bolt_port), auth=(neo4j_username, neo4j_password))
 
 app = Flask(__name__)
+CORS(app)
 
 def close_connection():
     print('closing neo4j driver session')

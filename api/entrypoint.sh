@@ -12,4 +12,4 @@ while true; do
     fi
 done
 
-flask run
+flask run --with-threads
