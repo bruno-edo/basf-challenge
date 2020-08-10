@@ -9,5 +9,8 @@ data/dumps/*
 # Ignore VS Code created files
 .vscode
 
+# Ignore compiled python files
+*.pyc
+
 # Don't ignore
 !.gitkeep
