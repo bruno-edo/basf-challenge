@@ -12,5 +12,9 @@ data/dumps/*
 # Ignore compiled python files
 *.pyc
 
+# React/Node
+*/node_modules
+*/yarn.lock
+
 # Don't ignore
 !.gitkeep
