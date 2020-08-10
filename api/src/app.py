@@ -36,3 +36,16 @@ def get_chemicals(chemical_name):
         result = session.run(query)
 
         return jsonify(result.data())
+
+
+@app.route('/patent/<chemical_name>/<int:chemical_type>', methods=['GET'])
+def get_patents(chemical_name, chemical_type):
+    with neo4j_driver.session(database=neo4j_db_name) as session:
+        query = (
+            "match (c:Chemical {{name: '{}', type: {}}})-[:CITATION]-(p:Patent) "
+            'return p as patent'
+        ).format(chemical_name.strip().lower(), chemical_type)
+
+        result = session.run(query)
+
+        return jsonify(result.data())
