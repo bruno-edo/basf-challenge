@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Home from './features/home';
+import DocumentScreen from './features/documents';
 import store, { history } from './store';
 
 import { Switch, Route } from "react-router-dom";
@@ -15,6 +16,9 @@ function App() {
       <Provider store={store}>
         <Router history={history}>
           <Switch>
+            <Route path="/patents">
+              <DocumentScreen />
+            </Route>
             <Route path="/">
               <Home />
             </Route>

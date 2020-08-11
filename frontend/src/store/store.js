@@ -7,10 +7,14 @@ import { createBrowserHistory } from "history";
 import chemicalReducer from './chemicalReducer';
 import sagas from './sagas';
 
-const createRootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-  chemicals: chemicalReducer,
-});
+import { documentReducer } from '../features/documents';
+
+const createRootReducer = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    chemicals: chemicalReducer,
+    documents: documentReducer,
+  });
 
 const history = createBrowserHistory();
 const reducers = createRootReducer(history);

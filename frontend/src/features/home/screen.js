@@ -8,7 +8,7 @@ import "./css/home.css";
 import { ChemicalSectionContainer } from './containers';
 import { ChemicalSearchBarContainer } from '../../containers';
 
-const Home = () => {
+const Screen = () => {
     const { loading, queryExecuted } = useSelector(
         ({ chemicals }) => chemicals
     )
@@ -27,4 +27,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Screen;

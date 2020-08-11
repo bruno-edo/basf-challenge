@@ -32,12 +32,14 @@ const ChemicalSectionComponent = ({
         <ChemicalTableContainer
           data={dataChemicalType1}
           title="Chemical Type 1"
+          type={1}
         />
       </div>
       <div className="Table-2">
         <ChemicalTableContainer
           data={dataChemicalType2}
           title="Chemical Type 2"
+          type={2}
         />
       </div>
     </div>
