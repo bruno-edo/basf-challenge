@@ -1,5 +1,5 @@
 # pull official base image
-FROM node:13.12.0-alpine
+FROM node:12.18.3-alpine3.9
 
 # set working directory
 WORKDIR /app
