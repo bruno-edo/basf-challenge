@@ -3,7 +3,6 @@ import { createActions, createReducer } from 'reduxsauce';
 export const INITIAL_STATE = {
   loading: false,
   error: false,
-  hasData: false,
   chemicals: {}
 };
 

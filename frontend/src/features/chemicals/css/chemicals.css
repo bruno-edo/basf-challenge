@@ -1,0 +1,23 @@
+.Container {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100vw;
+}
+
+.TablesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%
+}
+
+.Table1 {
+    margin-right: 10px;
+    width: 100%;
+}
+
+.Table2 {
+    margin-left: 10px;
+    width: 100%;
+}

@@ -10,27 +10,21 @@ import "./css/chemicals.css";
 const Chemicals = () => {
   const { chemicals } = useSelector(({ chemicals }) => chemicals);
 
-  const dataChemicalType1 = chemicals["type1"];
-  const dataChemicalType2 = chemicals["type2"];
+  const dataChemicalType1 = chemicals["type1"] ? chemicals["type1"] : [];
+  const dataChemicalType2 = chemicals["type2"] ? chemicals["type2"] : [];
 
   return (
-    <div style={{ width: "100%" }}>
+    <div className="Container">
       <div>{/* TODO */}</div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ marginRight: 10, width: "100%" }}>
+      <div className="TablesContainer">
+        <div className="Table1">
           <ChemicalTableContainer
             data={dataChemicalType1}
             title="Chemical Type 1"
           />
         </div>
-        <div style={{ marginLeft: 10, width: "100%" }}>
+        <div className="Table2">
           <ChemicalTableContainer
             data={dataChemicalType2}
             title="Chemical Type 2"
