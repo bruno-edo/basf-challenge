@@ -8,21 +8,28 @@ import { Switch, Route } from "react-router-dom";
 import { ConnectedRouter as Router } from "connected-react-router";
 import { Provider } from 'react-redux';
 
+import { Sidebar } from './components';
+
 import './app.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="Container">
       <Provider store={store}>
         <Router history={history}>
-          <Switch>
-            <Route path="/patents">
-              <DocumentScreen />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+          
+          <Sidebar />
+
+          <div className="App">
+            <Switch>
+              <Route path="/patents">
+                <DocumentScreen />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
         </Router>
       </Provider>
     </div>

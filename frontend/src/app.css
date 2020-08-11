@@ -1,8 +1,19 @@
+.Container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+}
+
 .App {
     background-color: #F5F5F5;
     min-height: 100vh;
-    display: flex;
     flex-direction: column;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Sidebar {
+    width: 300px;
+    min-height: 100vh;
 }
