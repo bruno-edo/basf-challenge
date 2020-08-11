@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Home from './features/home';
-import Chemicals from "./features/chemicals";
 import store, { history } from './store';
 
 import { Switch, Route } from "react-router-dom";
@@ -16,9 +15,6 @@ function App() {
       <Provider store={store}>
         <Router history={history}>
           <Switch>
-            <Route path="/chemicals">
-              <Chemicals />
-            </Route>
             <Route path="/">
               <Home />
             </Route>

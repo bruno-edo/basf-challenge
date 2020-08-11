@@ -9,17 +9,12 @@ function* queryRequest({ queryString }) {
     const response = yield call(api.getChemicalList, queryString);
 
     if (response.ok) {
-        yield put(Creators.querySuccess(response.data));
+        yield put(Creators.querySuccess(response.data, queryString));
     } else {
         yield put(Creators.queryFailure());
     }
 }
 
-function* querySuccess() {
-    yield put(push("/chemicals"))
-}
-
 export default [
     takeLatest(Types.QUERY_REQUEST, queryRequest),
-    takeLatest(Types.QUERY_SUCCESS, querySuccess)
 ];

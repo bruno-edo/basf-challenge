@@ -1,14 +1,16 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 export const INITIAL_STATE = {
+  totalDocuments: 0,
   loading: false,
   error: false,
+  queryExecuted: false,
   chemicals: {}
 };
 
 export const { Types, Creators } = createActions({
   queryRequest: ['queryString'],
-  querySuccess: ['data'],
+  querySuccess: ['data', 'queryString'],
   queryFailure: null,
 });
 
@@ -19,28 +21,39 @@ const queryRequest = (state, { queryString }) => ({
   error: false,
 });
 
-const querySuccess = (state, { data }) => ({
-  ...state,
-  loading: false,
-  error: false,
-  chemicals: data.reduce((acc, currentValue) => {
-    const chemicalTypeKey = `type${currentValue.chemical.type}`;
+const querySuccess = (state, { data, queryString }) => {
+  const mainChemical = data.find(
+    ({ chemical }) =>
+      chemical.name.toLowerCase() === queryString.toLowerCase()
+  );
 
-    if(!(chemicalTypeKey in acc)) {
-      acc[chemicalTypeKey] = [];
-    }
+  const totalDocuments = mainChemical ? mainChemical.chemicalTotal : 0;
 
-    acc[chemicalTypeKey].push({
-      numDocResults: currentValue.chemicalTotal,
-      name: currentValue.chemical.name.replace(
-        /\w\S*/g,
-        (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-      ),
-    });
+  return {
+    ...state,
+    totalDocuments: totalDocuments,
+    queryExecuted: true,
+    loading: false,
+    error: false,
+    chemicals: data.reduce((acc, currentValue) => {
+      const chemicalTypeKey = `type${currentValue.chemical.type}`;
 
-    return acc;
-  }, {}),
-});
+      if (!(chemicalTypeKey in acc)) {
+        acc[chemicalTypeKey] = [];
+      }
+
+      acc[chemicalTypeKey].push({
+        numDocResults: currentValue.chemicalTotal,
+        name: currentValue.chemical.name.replace(
+          /\w\S*/g,
+          (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+        ),
+      });
+
+      return acc;
+    }, {}),
+  };
+};
 
 const queryFailure = (state, {}) => ({
   ...state,

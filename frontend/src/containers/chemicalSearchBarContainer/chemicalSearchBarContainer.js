@@ -8,7 +8,7 @@ import { SearchBar } from '../../components';
 const ChemicalSearchBarContainer = () => {
     const dispatch = useDispatch();
 
-    const { loading, error, hasData } = useSelector(
+    const { loading, error } = useSelector(
       ({ chemicals }) => chemicals
     );
 
