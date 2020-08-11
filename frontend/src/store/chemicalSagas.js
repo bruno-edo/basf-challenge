@@ -1,5 +1,4 @@
 import { takeLatest, put, call } from "redux-saga/effects";
-import { push } from "connected-react-router";
 
 import api from '../api';
 

@@ -4,8 +4,6 @@ services:
     build: ./api
     ports:
       - "5000:5000" # Default for flask
-    expose:
-      - "80"
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
@@ -27,3 +25,13 @@ services:
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       - NEO4J_dbms_directories_data=/data
       - NEO4J_AUTH=neo4j/basf
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - '/app/node_modules'
+    stdin_open: true
+    depends_on:
+      - api
+      - neo4j
