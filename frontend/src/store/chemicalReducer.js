@@ -24,9 +24,23 @@ const querySuccess = (state, { data }) => ({
   ...state,
   loading: false,
   error: false,
-  chemicals: {
-    ...data
-  },
+  chemicals: data.reduce((acc, currentValue) => {
+    const chemicalTypeKey = `type${currentValue.chemical.type}`;
+
+    if(!(chemicalTypeKey in acc)) {
+      acc[chemicalTypeKey] = [];
+    }
+
+    acc[chemicalTypeKey].push({
+      numDocResults: currentValue.chemicalTotal,
+      name: currentValue.chemical.name.replace(
+        /\w\S*/g,
+        (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+      ),
+    });
+
+    return acc;
+  }, {}),
 });
 
 const queryFailure = (state, {}) => ({
